@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:metadata>
+		<!-- <f:viewAction action="#{listarBaseConhecimentoBean.consultar}" /> -->
+	</f:metadata>
+
+	<ui:define name="titulo">Consulta da Base</ui:define>
+
+	<ui:define name="corpo">
+
+		<h1>Consulta da Base</h1>
+		<h:form id="buscarBase">
+			<h2>Buscar Base</h2>
+			<h:outputLabel value="Consultar Base" for="nome" />
+			<h:inputText id="nome" value="#{listarBaseConhecimentoBean.nome}"
+				required="true" />
+			<h:commandButton value="Buscar"
+				action="#{listarBaseConhecimentoBean.buscarBases()}">
+				<f:ajax execute="@form" render=":lista" />
+			</h:commandButton>
+		</h:form>
+		<h:form id="lista">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:dataTable value="#{listarBaseConhecimentoBean.bases}" var="base"
+				border="1" cellspacing="0" cellpadding="2" paginator="true" rows="8"
+				paginatorPosition="bottom">
+				<p:column headerText="Projeto" sortBy="#{base.projeto.nome}">
+					<h:outputText value="#{base.projeto.nome}" />
+				</p:column>
+				<p:column headerText="Categoria"
+					sortBy="#{base.categoria.modalidade}">
+					<h:outputText value="#{base.categoria.modalidade}" />
+				</p:column>
+				<p:column headerText="Tecnico" sortBy="#{base.tecnico.nome}">
+					<h:outputText value="#{base.tecnico.nome}" />
+				</p:column>
+				<p:column headerText="Data Criação" style="text-align: center"
+					sortBy="#{base.data}">
+					<h:outputText value="#{base.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Problema" sortBy="#{base.problemaEncontrado}">
+					<h:outputText value="#{base.problemaEncontrado}" />
+				</p:column>
+				<p:column width="70" style="text-align: center">
+					<p:button icon="ui-icon-pencil" title="Editar"
+						outcome="/CadastroBaseConhecimento">
+						<f:param name="id" value="#{base.id}" />
+					</p:button>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

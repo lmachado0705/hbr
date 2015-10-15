@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:metadata>
+		<f:viewAction action="#{consultaProjetoBean.consultar}" />
+	</f:metadata>
+
+	<ui:define name="titulo">Consulta de Projetos</ui:define>
+
+	<ui:define name="corpo">
+
+		<h1>Consulta de Projeto</h1>
+
+		<h:form id="frm">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:dataTable value="#{consultaProjetoBean.projetos}" var="projeto"
+				border="1" cellspacing="0" cellpadding="2" paginator="true" rows="5"
+				paginatorPosition="bottom">
+
+				<p:column headerText="Projeto" sortBy="#{projeto.nome}">
+					<h:outputText value="#{projeto.nome}" />
+				</p:column>
+				<p:column headerText="Data Criação" style="text-align: center"
+					sortBy="#{projeto.dataCriacao}">
+					<h:outputText value="#{projeto.dataCriacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				<p:column width="70" style="text-align: center">
+					<p:button icon="ui-icon-pencil" title="Editar"
+						outcome="/CadastroProjeto">
+						<f:param name="id" value="#{projeto.id}" />
+					</p:button>
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						process="@this" update="@form"
+						action="#{consultaProjetoBean.excluir}">
+						<f:setPropertyActionListener value="#{projeto}"
+							target="#{consultaProjetoBean.projetoSelecionado}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

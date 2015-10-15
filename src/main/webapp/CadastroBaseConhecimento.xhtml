@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<f:metadata>
+		<o:viewParam name="id"
+			value="#{cadastroBaseConhecimentoBean.baseConhecimento}" />
+		<f:viewAction
+			action="#{cadastroBaseConhecimentoBean.prepararCadastro}" />
+	</f:metadata>
+
+	<ui:define name="titulo">Cadastro de Base de Conhecimento</ui:define>
+
+	<ui:define name="corpo">
+		<h1>Cadastro de Base Conhecimento</h1>
+
+		<h:form id="frm">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:panelGrid columns="2" id="grid">
+
+
+				<p:outputLabel value="Projeto" for="projeto" />
+				<p:selectOneMenu
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.projeto}"
+					id="projeto" filter="true" filterMatchMode="contains">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+					<f:selectItems
+						value="#{cadastroBaseConhecimentoBean.todosProjetos}"
+						var="projeto" itemValue="#{projeto}" itemLabel="#{projeto.nome}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:selectOneMenu
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.categoria}"
+					id="categoria" filter="true" filterMatchMode="contains">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+					<f:selectItems
+						value="#{cadastroBaseConhecimentoBean.todasCategorias}"
+						var="categoria" itemValue="#{categoria}"
+						itemLabel="#{categoria.modalidade}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Tecnico" for="tecnico" />
+				<p:selectOneMenu
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.tecnico}"
+					id="tecnico" filter="true" filterMatchMode="contains">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+					<f:selectItems
+						value="#{cadastroBaseConhecimentoBean.todosTecnicos}"
+						var="tecnico" itemValue="#{tecnico}" itemLabel="#{tecnico.nome}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Data" for="dataCriacao" />
+				<p:calendar id="dataCriacao" size="12" pattern="dd/MM/yyyy"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.data}"
+					locale="pt">
+
+				</p:calendar>
+
+				<p:outputLabel value="Problema Encontrado" for="problema" />
+				<p:inputText id="problema" size="50"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.problemaEncontrado}">
+				</p:inputText>
+
+				<p:outputLabel value="Resolucão" for="resolucao" />
+				<p:editor id="resolucao" widgetVar="editorWidget"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.resolucao}"
+					width="600" />
+
+				<h:outputLabel />
+				<p:commandButton value="Salvar"
+					action="#{cadastroBaseConhecimentoBean.salvar}" icon="ui-icon-disk"
+					update="@form" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
