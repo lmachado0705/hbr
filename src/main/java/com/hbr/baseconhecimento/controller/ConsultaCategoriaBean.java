@@ -21,9 +21,8 @@ public class ConsultaCategoriaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private CategoriaService consulta;
-	@Inject
-	private CategoriaRepository repositorio;
+	private CategoriaService categoriaService;
+	
 
 	private List<Categoria> categorias;
 
@@ -33,7 +32,7 @@ public class ConsultaCategoriaBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		try {
-			this.consulta.excluir(this.categoriaSelecionada);
+			this.categoriaService.excluir(this.categoriaSelecionada);
 			this.consultar();
 
 			context.addMessage(null, new FacesMessage("Categoria excluída com sucesso!"));
@@ -45,17 +44,10 @@ public class ConsultaCategoriaBean implements Serializable {
 		}
 	}
 
-	public void consultar() {
-		this.categorias = repositorio.todos();
+	public void consultar() throws NegocioException {
+		this.categorias = categoriaService.todos();
 	}
 
-	public CategoriaService getConsulta() {
-		return consulta;
-	}
-
-	public void setConsulta(CategoriaService consulta) {
-		this.consulta = consulta;
-	}
 
 	public List<Categoria> getCategorias() {
 		return categorias;

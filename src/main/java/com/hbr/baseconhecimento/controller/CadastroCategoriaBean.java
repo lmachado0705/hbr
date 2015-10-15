@@ -18,7 +18,7 @@ public class CadastroCategoriaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private CategoriaService cadastro;
+	private CategoriaService categoriaService;
 
 	private Categoria categoria;
 
@@ -33,7 +33,7 @@ public class CadastroCategoriaBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		try {
-			this.cadastro.salvar(this.categoria);
+			this.categoriaService.salvar(this.categoria);
 
 			this.categoria = new Categoria();
 			context.addMessage(null, new FacesMessage("Lançamento salvo com sucesso!"));

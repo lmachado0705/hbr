@@ -1,6 +1,7 @@
 package com.hbr.baseconhecimento.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -25,6 +26,12 @@ public class TecnicoService implements Serializable {
 	public void excluir(Tecnico tecnico) throws NegocioException {
 		tecnico = this.repositorio.porId(tecnico.getId());
 		this.repositorio.remover(tecnico);
+	}
+
+	@Transactional
+	public List<Tecnico> todos() throws NegocioException {
+
+		return this.repositorio.todos();
 	}
 
 }

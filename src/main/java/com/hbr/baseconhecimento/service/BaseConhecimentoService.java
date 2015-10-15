@@ -1,6 +1,8 @@
 package com.hbr.baseconhecimento.service;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.hbr.baseconhecimento.model.BaseConhecimento;
@@ -28,5 +30,15 @@ public class BaseConhecimentoService implements Serializable {
 		base = this.repositorio.porId(base.getId());
 		this.repositorio.remover(base);
 	}
+	
+	@Transactional
+	public List<BaseConhecimento> todos() throws NegocioException {
+		return repositorio.todos();
+	}
+	@Transactional
+	public List<BaseConhecimento> retornaBase(String nome) throws NegocioException {
+		return repositorio.retornaBase(nome);
+	}
+
 
 }

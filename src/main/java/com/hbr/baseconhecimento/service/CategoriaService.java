@@ -1,6 +1,7 @@
 package com.hbr.baseconhecimento.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -26,5 +27,19 @@ public class CategoriaService implements Serializable {
 		categoria = this.repositorio.porId(categoria.getId());
 		this.repositorio.remover(categoria);
 	}
+
+	@Transactional
+	public List<Categoria> todos() throws NegocioException {
+		return this.repositorio.todos();
+	}
+	
+	@Transactional
+	public List<String> descricoesQueContem(String descricao) throws NegocioException {
+		return this.repositorio.descricoesQueContem(descricao);
+	}
+
+		
+	
+		
 
 }

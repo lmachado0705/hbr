@@ -40,4 +40,12 @@ public class CategoriaRepository implements Serializable {
 	public void remover(Categoria categoria) {
 		this.manager.remove(categoria);
 	}
+
+	public List<String> descricoesQueContem(String descricao) {
+		TypedQuery<String> query = manager.createQuery(
+				"select distinct modalidade from Categoria " + "where upper(modalidade) like upper(:descricao)",
+				String.class);
+		query.setParameter("modalidade", "%" + descricao + "%");
+		return query.getResultList();
+	}
 }

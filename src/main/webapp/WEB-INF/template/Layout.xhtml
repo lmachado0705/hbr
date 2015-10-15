@@ -8,12 +8,13 @@
 <h:head>
 	<title><ui:insert name="titulo">Sistema Financeiro</ui:insert></title>
 	<h:outputStylesheet library="algaworks" name="estilo.css" />
+	<h:outputScript library="algaworks" name="locale.js" />
 </h:head>
 
 <h:body>
-	<!-- <f:metadata>
-		<f:viewAction action="#{consultaLancamentosBean.consultar}" />
-	</f:metadata> -->
+	<f:metadata>
+		<f:viewAction action="#{consultaCategoriaBean.consultar}" />
+	</f:metadata>
 
 	<p:ajaxStatus styleClass="ajax-status">
 		<f:facet name="start">
@@ -25,22 +26,30 @@
 	</p:ajaxStatus>
 
 	<header>
-		<h:graphicImage library="algaworks" name="logo.png" />
-		
-		<!-- <div style="float: right; margin-right: 20px; margin-top: 8px">
-			Olá #{usuario.nome}!
-		</div> -->
+		<h:graphicImage library="algaworks" name="marcahbr.png" />
 	</header>
-	
+
 	<h:form>
-		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
+		<p:menubar style="margin-top: 35px;">
 			<p:submenu label="Cadastros">
-				<p:menuitem value="Categoria" action="/CadastroCategoria?faces-redirect=true"/>
-				<p:menuitem value="Lançamento" action="/CadastroLancamento?faces-redirect=true" />
+				<p:menuitem value="Categoria"
+					action="/CadastroCategoria?faces-redirect=true" />
+				<p:menuitem value="Tecnico"
+					action="/CadastroTecnico?faces-redirect=true" />
+				<p:menuitem value="Projeto"
+					action="/CadastroProjeto?faces-redirect=true" />
+				<p:menuitem value="Base de Conhecimento"
+					action="/CadastroBaseConhecimento?faces-redirect=true" />
 			</p:submenu>
 			<p:submenu label="Consultas">
-				<p:menuitem value="Pessoas" />
-				<p:menuitem value="Categoria" action="/ConsultaCategoria?faces-redirect=true" />
+				<p:menuitem value="Categoria"
+					action="/ConsultaCategoria?faces-redirect=true" />
+				<p:menuitem value="Tecnico"
+					action="/ConsultaTecnico?faces-redirect=true" />
+				<p:menuitem value="Projeto"
+					action="/ConsultaProjeto?faces-redirect=true" />
+				<p:menuitem value="Base de Conhecimento"
+					action="/ConsultaBaseConhecimento?faces-redirect=true" />
 			</p:submenu>
 			<p:submenu label="Sistema">
 				<p:menuitem value="Sair" />
@@ -51,10 +60,8 @@
 	<div id="conteudo">
 		<ui:insert name="corpo" />
 	</div>
-	
-	<footer>
-		Base Conhecimento - HBR
-	</footer>
+
+	<footer> Base Conhecimento - HBR </footer>
 </h:body>
 
 </html>

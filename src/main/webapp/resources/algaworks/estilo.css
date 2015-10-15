@@ -3,21 +3,23 @@
 body {
 	font-size: 12px;
 	font-family: Arial, Helvetica, sans-serif;
-	margin: 0px;
-	font-weight: normal
+	margin: 0 auto;
+	font-weight: normal;
+	width:80%;
+	
 }
 
 header {
 	padding: 5px;
-	margin-bottom: 20px;
-	height: 30px;
-	background-color: #729fcf;
-	color: #fff;
-	box-shadow: 0px 2px 2px #ccc
+	margin-bottom: 40px;
+	height: 100px;
+	background-color: #eeeeec;
+	color: #eeeeec;
+	box-shadow: 0px 15px 15px #eeeeec
 }
 
 #conteudo {
-	padding: 0px 8px
+		margin-top: 10px;
 }
 
 footer {
@@ -28,11 +30,12 @@ footer {
 }
 
 h1 {
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 500;
 	padding: 0px;
 	margin: 0px;
-	margin-bottom: 10px
+	margin-bottom: 10px;
+	font-style: italic;
 }
 
 .ajax-status {

@@ -1,6 +1,7 @@
 package com.hbr.baseconhecimento.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,4 +28,11 @@ public class ProjetoService implements Serializable {
 		this.repositorio.remover(projeto);
 	}
 
+	@Transactional
+	public List<Projeto> todos() throws NegocioException {
+	return	this.repositorio.todos();
+	}
+
+		
+	
 }
