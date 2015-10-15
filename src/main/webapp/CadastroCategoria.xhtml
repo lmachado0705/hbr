@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<f:metadata>
+		 <o:viewParam name="id" value="#{cadastroCategoriaBean.categoria}" />
+		<f:viewAction action="#{cadastroCategoriaBean.prepararCadastro}" />
+	</f:metadata>
+
+	<ui:define name="titulo">Cadastro de Categoria</ui:define>
+
+	<ui:define name="corpo">
+		<h1>Cadastro de Categoria</h1>
+
+		<h:form id="frm">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:panelGrid columns="2" id="grid">
+
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:inputText id="categoria" size="12"
+					value="#{cadastroCategoriaBean.categoria.modalidade}">
+
+				</p:inputText>
+
+
+				<h:outputLabel />
+				<p:commandButton value="Salvar"
+					action="#{cadastroCategoriaBean.salvar}" icon="ui-icon-disk"
+					update="@form" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
