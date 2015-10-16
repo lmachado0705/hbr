@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<f:metadata>
+		<o:viewParam name="id"
+			value="#{cadastroBaseConhecimentoBean.baseConhecimento}" />
+		
+	</f:metadata>
+
+	<ui:define name="titulo">Cadastro de Base de Conhecimento</ui:define>
+
+	<ui:define name="corpo">
+		<h1>Cadastro de Base Conhecimento</h1>
+
+		<h:form id="frm">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:panelGrid columns="2" id="grid">
+
+
+				<p:outputLabel value="Projeto" for="projeto" />
+				<p:inputText id="projeto" size="50"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.projeto.nome}" disabled="true">
+				</p:inputText>
+
+
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:inputText id="categoria" size="50"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.categoria.modalidade}" disabled="true">
+				</p:inputText>
+
+
+				<p:outputLabel value="Tecnico" for="tecnico" />
+				<p:inputText id="tecnico" size="50"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.tecnico.nome}" disabled="true">
+				</p:inputText>
+
+
+				<p:outputLabel value="Data" for="dataCriacao" />
+				<p:calendar id="dataCriacao" size="12" pattern="dd/MM/yyyy"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.data}"
+					locale="pt" disabled="true">
+
+				</p:calendar>
+
+				<p:outputLabel value="Problema Encontrado" for="problema" />
+				<p:inputText id="problema" size="50"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.problemaEncontrado}" disabled="true">
+				</p:inputText>
+
+				<p:outputLabel value="Resolucão" for="resolucao" />
+				<p:editor id="resolucao" widgetVar="editorWidget"
+					value="#{cadastroBaseConhecimentoBean.baseConhecimento.resolucao}"
+					width="600" />
+
+				<h:outputLabel />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

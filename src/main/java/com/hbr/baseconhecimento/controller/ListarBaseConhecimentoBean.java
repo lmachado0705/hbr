@@ -20,7 +20,9 @@ public class ListarBaseConhecimentoBean implements Serializable {
 	private BaseConhecimentoService baseConhecimentoService;
 
 	private String nome;
-	
+
+	private String categoriaParam;
+
 	private List<BaseConhecimento> bases;
 
 	private BaseConhecimento baseSelecionado;
@@ -40,9 +42,22 @@ public class ListarBaseConhecimentoBean implements Serializable {
 	public void setBases(List<BaseConhecimento> bases) {
 		this.bases = bases;
 	}
-	
-	public List<BaseConhecimento> buscarBases() throws NegocioException{
-		return baseConhecimentoService.retornaBase(nome);
+
+	public void buscarBases() throws NegocioException {
+		bases = baseConhecimentoService.retornaBase(nome);
+		this.nome = "";
+	}
+
+	public void consultar() throws NegocioException {
+		bases = baseConhecimentoService.buscarPorCategoria(categoriaParam);
+	}
+
+	public String getCategoriaParam() {
+		return categoriaParam;
+	}
+
+	public void setCategoriaParam(String categoriaParam) {
+		this.categoriaParam = categoriaParam;
 	}
 
 }

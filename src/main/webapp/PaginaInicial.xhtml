@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:metadata>
+		<f:viewAction action="#{consultaTecnicoBean.consultar}" />
+	</f:metadata>
+
+	<ui:define name="titulo">Consulta de Tecnicos</ui:define>
+
+	<ui:define name="corpo">
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6" style="background-color: gray;"></div>
+				<div class="ui-grid-col-4" style="background-color: gray;">
+					<label style="font-size: 20px"><font color="white">Forum</font></label>
+				</div>
+				<div class="ui-grid-col-4" style="background-color: gray;"></div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12" style="background-color: #eeeeec">
+					<h1>Categoria</h1>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-8">
+					<p:link outcome="/ListarBaseConhecimento" value="TI">
+						<f:param name="categoria" value="TI" />
+					</p:link>
+					<p style="font-size:4;">Categoria TI</p>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-8">
+					<p:link outcome="/ListarBaseConhecimento" value="MODALIDADE">
+						<f:param name="categoria" value="MODALIDADE" />
+					</p:link>
+					<p style="font-size:4;">Categoria Modalidade</p>
+				</div>
+
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12" style="background-color: #eeeeec">
+					<h1>Outros</h1>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-8">
+					<p:link outcome="/ListarBaseConhecimento" value="Teste2">
+						<f:param name="categoria" value="TI" />
+					</p:link>
+					<p style="font-size:4;">Categoria Teste2</p>
+					
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-8">
+					<p:link outcome="/ListarBaseConhecimento" value="Teste 1">
+						<f:param name="categoria" value="MODALIDADE" />
+					</p:link>
+					<p style="font-size:4;">Categoria Teste 1</p>
+				</div>
+
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>

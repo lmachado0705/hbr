@@ -42,13 +42,21 @@ public class BaseConhecimentoRepository implements Serializable {
 		this.manager.remove(baseConhecimento);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<BaseConhecimento> retornaBase(String nome) {
-		
-				Query query = manager.createQuery(
-				"select id,projeto,categoria,tecnico,data,problemaEncontrado,resolucao from BaseConhecimento "
-				+ "where problemaEncontrado like upper(:nome)",BaseConhecimento.class);
+
+		Query query = manager.createQuery("select b from BaseConhecimento b where problemaEncontrado like (:nome) ",
+				BaseConhecimento.class);
 		query.setParameter("nome", "%" + nome + "%");
 		return query.getResultList();
+
+	}
+	@SuppressWarnings("unchecked")
+	public List<BaseConhecimento> buscarPorCategoria(String categoria) {
+		Query query = manager.createQuery("select b from BaseConhecimento b where categoria.modalidade = '"+categoria+"'",
+				BaseConhecimento.class);
 		
+		return query.getResultList();
+
 	}
 }

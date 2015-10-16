@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hbr</groupId>
-  <artifactId>BaseConhecimento</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <properties>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hbr</groupId>
+	<artifactId>BaseConhecimento</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -28,25 +28,38 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!-- OmniFaces (utilitarios para JSF) -->
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
 			<version>2.0</version>
 			<scope>compile</scope>
-		</dependency><!-- PrimeFaces (biblioteca de componentes) -->
+		</dependency>
+		
+		<!-- PrimeFaces (biblioteca de componentes) -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>5.1</version>
 			<scope>compile</scope>
-		</dependency><!-- Weld (implementação do CDI) -->
+		</dependency>
+		
+		<!--Themes -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.8</version>
+		</dependency>
+		<!-- Weld (implementação do CDI) -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
 			<version>2.2.9.Final</version>
 			<scope>compile</scope>
-		</dependency><!-- Weld depende do Jandex -->
+		</dependency>
+		
+		<!-- Weld depende do Jandex -->
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jandex</artifactId>
@@ -61,6 +74,7 @@
 			<version>5.1.3.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		
 		<!-- Núcleo do Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -68,6 +82,7 @@
 			<version>4.3.8.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		
 		<!-- Implementação de EntityManager da JPA -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -75,6 +90,7 @@
 			<version>4.3.8.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		
 		<!-- Driver JDBC do Postgres -->
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -91,6 +107,6 @@
 		</dependency>
 
 	</dependencies>
-  
-  
+
+
 </project>

@@ -39,6 +39,10 @@ public class BaseConhecimentoService implements Serializable {
 	public List<BaseConhecimento> retornaBase(String nome) throws NegocioException {
 		return repositorio.retornaBase(nome);
 	}
-
+	
+	@Transactional
+	public List<BaseConhecimento> buscarPorCategoria(String categoria) throws NegocioException {
+		return repositorio.buscarPorCategoria(categoria);
+	}
 
 }
